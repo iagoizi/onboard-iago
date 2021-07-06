@@ -1,3 +1,9 @@
-#onboard-iago
+# Ariranha's Onboarding
 
-Repositório criado para atividades do **onboard** técnico no instituto taqtile.
+## Descrição do projeto
+
+Esse é um projeto desenvolvido durante o onboarding (taqtile).
+
+## Environment and tools \*
+
+## Steps to run and debug \*
