@@ -1,8 +1,8 @@
 # Ariranha's Onboarding
 
-## Descrição do projeto
+## Project's description
 
-Esse é um projeto desenvolvido durante o onboarding (taqtile).
+This is a project created to practice technical skills during my onboarding at Instituto Taqtile.
 
 ## Environment and tools \*
 
