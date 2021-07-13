@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import { Input } from '../components/Input';
 
+interface LoginScreenState {
+  email: string;
+  password: string;
+}
+
 export const LoginScreen: React.FC = () => {
   const [fields, setFields] = useState({ email: '', password: '' });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFields({
-      ...fields,
-      [event.target.name]: event.target.value,
+    setFields((prevState: LoginScreenState) => {
+      return {
+        ...prevState,
+        [event.target.name]: event.target.value,
+      };
     });
   };
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(fields);
   };
 
   return (
