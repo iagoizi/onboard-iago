@@ -32,11 +32,19 @@ export const LoginScreen: React.FC = () => {
           label='E-mail'
           type='email'
           onChange={handleChange}
-          title='a'
-          pattern='\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*.([a-z]{2,4}|\d+)'
+          title='usuario@dominio.com'
+          pattern='\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*.([a-zA-Z]{2,}|\d+)' //consultei https://www.formget.com/regular-expression-for-email/
           required
         />
-        <Input name='password' label='Senha' type='password' onChange={handleChange} required />
+        <Input
+          name='password'
+          label='Senha'
+          type='password'
+          onChange={handleChange}
+          title='No mínimo 7 caracteres, tendo pelo menos uma letra e um dígito'
+          pattern='(?=.*[a-zA-Z])(?=.*\d).{7,}'
+          required
+        />
         <button>Entrar</button>
       </form>
     </div>
