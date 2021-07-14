@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Input } from '../components/Input';
 import { LoginData, LOGIN_MUTATION } from '../data/loginMutation';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../utils/regex.ultils';
@@ -11,9 +12,10 @@ interface LoginScreenState {
 
 export const LoginScreen: React.FC = () => {
   const [fields, setFields] = useState({ email: '', password: '' });
-
+  const history = useHistory();
   const handleCompleted = ({ login }: LoginData) => {
     localStorage.setItem('token', login.token);
+    history.push('blank-page');
   };
 
   const [authenticate, { error }] = useMutation<LoginData>(LOGIN_MUTATION, {
