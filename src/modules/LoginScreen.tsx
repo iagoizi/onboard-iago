@@ -59,7 +59,7 @@ export const LoginScreen: React.FC = () => {
           pattern={PASSWORD_REGEX}
           required
         />
-        <button disabled={loading}>Entrar {loading && 'carregando'}</button>
+        <button disabled={loading}>Entrar {loading && '(carregando)'}</button>
       </form>
     </div>
   );
