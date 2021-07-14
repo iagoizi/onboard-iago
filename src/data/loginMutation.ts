@@ -25,6 +25,8 @@ export interface UserData {
 }
 
 export interface LoginData {
-  token: string;
-  user: UserData;
+  login: {
+    token: string;
+    user: UserData;
+  };
 }
