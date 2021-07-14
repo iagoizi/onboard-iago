@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from '../components/Input';
+import { emailRegex, passwordRegex } from '../utils/regex.ultils';
 
 interface LoginScreenState {
   email: string;
@@ -33,7 +34,7 @@ export const LoginScreen: React.FC = () => {
           type='email'
           onChange={handleChange}
           title='usuario@dominio.com'
-          pattern='\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*.([a-zA-Z]{2,}|\d+)' //consultei https://www.formget.com/regular-expression-for-email/
+          pattern={emailRegex}
           required
         />
         <Input
@@ -42,7 +43,7 @@ export const LoginScreen: React.FC = () => {
           type='password'
           onChange={handleChange}
           title='No mínimo 7 caracteres, tendo pelo menos uma letra e um dígito'
-          pattern='(?=.*[a-zA-Z])(?=.*\d).{7,}'
+          pattern={passwordRegex}
           required
         />
         <button>Entrar</button>
