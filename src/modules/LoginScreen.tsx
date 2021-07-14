@@ -20,6 +20,9 @@ export const LoginScreen: React.FC = () => {
 
   const [authenticate, { error, loading }] = useMutation<LoginData>(LOGIN_MUTATION, {
     onCompleted: handleCompleted,
+    onError: (errorv) => {
+      console.warn(errorv);
+    },
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
