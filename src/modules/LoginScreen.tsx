@@ -18,7 +18,7 @@ export const LoginScreen: React.FC = () => {
     history.push('blank-page');
   };
 
-  const [authenticate, { error }] = useMutation<LoginData>(LOGIN_MUTATION, {
+  const [authenticate, { error, loading }] = useMutation<LoginData>(LOGIN_MUTATION, {
     onCompleted: handleCompleted,
   });
 
@@ -59,7 +59,7 @@ export const LoginScreen: React.FC = () => {
           pattern={PASSWORD_REGEX}
           required
         />
-        <button>Entrar</button>
+        <button disabled={loading}>Entrar {loading && 'carregando'}</button>
       </form>
     </div>
   );
