@@ -1,6 +1,8 @@
+import { ApolloError, useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Input } from '../components/Input';
-import { emailRegex, passwordRegex } from '../utils/regex.ultils';
+import { LoginData, LOGIN_MUTATION } from '../data/loginMutation';
+import { EMAIL_REGEX, PASSWORD_REGEX } from '../utils/regex.ultils';
 
 interface LoginScreenState {
   email: string;
@@ -9,6 +11,20 @@ interface LoginScreenState {
 
 export const LoginScreen: React.FC = () => {
   const [fields, setFields] = useState({ email: '', password: '' });
+
+  const handleCompleted = ({ login }: LoginData) => {
+    localStorage.setItem('token', login.token);
+    console.log(login);
+  };
+
+  const handleError = (errorResponse: ApolloError) => {
+    console.log(errorResponse.message);
+  };
+
+  const [authenticate, { error }] = useMutation<LoginData>(LOGIN_MUTATION, {
+    onCompleted: handleCompleted,
+    onError: handleError,
+  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFields((prevState: LoginScreenState) => {
@@ -21,12 +37,13 @@ export const LoginScreen: React.FC = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(fields);
+    authenticate({ variables: { data: fields } });
   };
 
   return (
     <div>
       <h1>Bem-vindo(a) à Taqtile</h1>
+      {error && <span style={{ color: 'red' }}>{error?.message}</span>}
       <form onSubmit={onSubmit}>
         <Input
           name='email'
@@ -34,7 +51,7 @@ export const LoginScreen: React.FC = () => {
           type='email'
           onChange={handleChange}
           title='usuario@dominio.com'
-          pattern={emailRegex}
+          pattern={EMAIL_REGEX}
           required
         />
         <Input
@@ -43,7 +60,7 @@ export const LoginScreen: React.FC = () => {
           type='password'
           onChange={handleChange}
           title='No mínimo 7 caracteres, tendo pelo menos uma letra e um dígito'
-          pattern={passwordRegex}
+          pattern={PASSWORD_REGEX}
           required
         />
         <button>Entrar</button>
