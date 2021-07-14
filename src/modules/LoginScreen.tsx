@@ -27,8 +27,16 @@ export const LoginScreen: React.FC = () => {
     <div>
       <h1>Bem-vindo(a) à Taqtile</h1>
       <form onSubmit={onSubmit}>
-        <Input name='email' label='E-mail' type='text' onChange={handleChange} />
-        <Input name='password' label='Senha' type='password' onChange={handleChange} />
+        <Input
+          name='email'
+          label='E-mail'
+          type='email'
+          onChange={handleChange}
+          title='a'
+          pattern='\w+[\+\.\w-]*@([\w-]+\.)*\w+[\w-]*.([a-z]{2,4}|\d+)'
+          required
+        />
+        <Input name='password' label='Senha' type='password' onChange={handleChange} required />
         <button>Entrar</button>
       </form>
     </div>
