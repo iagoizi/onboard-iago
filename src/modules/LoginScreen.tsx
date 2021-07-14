@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from '../components/Input';
+import { emailRegex, passwordRegex } from '../utils/regex.ultils';
 
 interface LoginScreenState {
   email: string;
@@ -27,8 +28,24 @@ export const LoginScreen: React.FC = () => {
     <div>
       <h1>Bem-vindo(a) à Taqtile</h1>
       <form onSubmit={onSubmit}>
-        <Input name='email' label='E-mail' type='text' onChange={handleChange} />
-        <Input name='password' label='Senha' type='password' onChange={handleChange} />
+        <Input
+          name='email'
+          label='E-mail'
+          type='email'
+          onChange={handleChange}
+          title='usuario@dominio.com'
+          pattern={emailRegex}
+          required
+        />
+        <Input
+          name='password'
+          label='Senha'
+          type='password'
+          onChange={handleChange}
+          title='No mínimo 7 caracteres, tendo pelo menos uma letra e um dígito'
+          pattern={passwordRegex}
+          required
+        />
         <button>Entrar</button>
       </form>
     </div>
