@@ -1,4 +1,4 @@
-import { ApolloError, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { Input } from '../components/Input';
 import { LoginData, LOGIN_MUTATION } from '../data/loginMutation';
@@ -14,16 +14,10 @@ export const LoginScreen: React.FC = () => {
 
   const handleCompleted = ({ login }: LoginData) => {
     localStorage.setItem('token', login.token);
-    console.log(login);
-  };
-
-  const handleError = (errorResponse: ApolloError) => {
-    console.log(errorResponse.message);
   };
 
   const [authenticate, { error }] = useMutation<LoginData>(LOGIN_MUTATION, {
     onCompleted: handleCompleted,
-    onError: handleError,
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,7 +37,7 @@ export const LoginScreen: React.FC = () => {
   return (
     <div>
       <h1>Bem-vindo(a) à Taqtile</h1>
-      {error && <span style={{ color: 'red' }}>{error?.message}</span>}
+      {error && <span style={{ color: 'red' }}>{error.message}</span>}
       <form onSubmit={onSubmit}>
         <Input
           name='email'
