@@ -1,6 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Blank } from './modules/Blank';
 import { LoginScreen } from './modules/LoginScreen';
+import { NotFound } from './modules/NotFound';
 
 export const App: React.FC = () => {
   return (
@@ -8,8 +10,8 @@ export const App: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route path='/login' component={LoginScreen} />
-          <Route path='/blank-page' component={() => <h1>Página em branco</h1>} />
-          <Redirect to='/login' />
+          <Route path='/blank-page' component={Blank} />
+          <Route path='/' component={NotFound} />
         </Switch>
       </BrowserRouter>
     </div>
