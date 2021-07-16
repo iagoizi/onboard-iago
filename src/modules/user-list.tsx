@@ -18,6 +18,13 @@ export const UserList: React.FC = () => {
     },
   });
 
+  const loadNext = () => {
+    console.log('Próxima');
+  };
+  const loadPrevious = () => {
+    console.log('Anterior');
+  };
+
   const list = data?.users.nodes.map((user) => (
     <Cell key={user.id}>
       <p>{`${user.name} : ${user.email}`}</p>
@@ -29,6 +36,12 @@ export const UserList: React.FC = () => {
       <ErrorMessage>{error?.message}</ErrorMessage>
       {error && <span style={{ color: 'red' }}>{error.message}</span>}
       {list}
+      <button onClick={loadPrevious} disabled={!data?.users.pageInfo.hasPreviousPage}>
+        Previous
+      </button>
+      <button onClick={loadNext} disabled={!data?.users.pageInfo.hasNextPage}>
+        Next
+      </button>
     </div>
   );
 };
