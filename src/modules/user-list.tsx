@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Blank: React.FC = () => {
+export const UserList: React.FC = () => {
   return <h1>Página em branco</h1>;
 };

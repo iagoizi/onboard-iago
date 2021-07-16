@@ -15,7 +15,7 @@ export const LoginScreen: React.FC = () => {
   const history = useHistory();
   const handleCompleted = ({ login }: LoginData) => {
     localStorage.setItem('token', login.token);
-    history.push('/blank-page');
+    history.push('/user-list');
   };
 
   const [authenticate, { error, loading }] = useMutation<LoginData>(LOGIN_MUTATION, {
