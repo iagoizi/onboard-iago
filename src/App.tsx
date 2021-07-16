@@ -10,7 +10,7 @@ export const App: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route path='/login' component={LoginScreen} />
-          <Route path='/user-list' component={UserList} />
+          <Route path='/user-list/:page' component={UserList} />
           <Route path='/' component={NotFound} />
         </Switch>
       </BrowserRouter>
