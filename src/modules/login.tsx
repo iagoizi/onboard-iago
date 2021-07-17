@@ -1,8 +1,9 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Input } from '../components/Input';
-import { LoginData, LOGIN_MUTATION } from '../data/loginMutation';
+import { ErrorMessage } from '../components/error-message';
+import { Input } from '../components/input';
+import { LoginData, LOGIN_MUTATION } from '../data/login-mutation';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../utils/regex.ultils';
 
 interface LoginScreenState {
@@ -15,7 +16,7 @@ export const LoginScreen: React.FC = () => {
   const history = useHistory();
   const handleCompleted = ({ login }: LoginData) => {
     localStorage.setItem('token', login.token);
-    history.push('/blank-page');
+    history.push('/user-list');
   };
 
   const [authenticate, { error, loading }] = useMutation<LoginData>(LOGIN_MUTATION, {
@@ -42,7 +43,7 @@ export const LoginScreen: React.FC = () => {
   return (
     <div>
       <h1>Bem-vindo(a) à Taqtile</h1>
-      {error && <span style={{ color: 'red' }}>{error.message}</span>}
+      <ErrorMessage>{error?.message}</ErrorMessage>
       <form onSubmit={onSubmit}>
         <Input
           name='email'
