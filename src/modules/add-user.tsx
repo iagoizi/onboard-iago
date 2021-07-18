@@ -70,7 +70,7 @@ export const AddUser: React.FC = () => {
           title='No mínimo 8 digitos'
           required
         />
-        <button disabled={loading}>Registrar {loading && '(carregando)'}</button>
+        <button disabled={loading}>{`Registrar ${loading && '(carregando)'}`}</button>
       </form>
     </div>
   );
