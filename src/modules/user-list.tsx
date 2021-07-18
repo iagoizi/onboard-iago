@@ -1,9 +1,9 @@
-import { useQuery } from '@apollo/client';
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Cell } from '../components/cell';
 import { ErrorMessage } from '../components/error-message';
 import { UsersListData, USERS_QUERY } from '../data/users-query';
+import { useAuthQuery } from '../hooks/use-auth-query';
 import { PAGE_SIZE } from '../utils/consts';
 import { ADD_USER_PATH, USERS_PATH } from '../utils/routes';
 
@@ -14,14 +14,8 @@ interface UserListParams {
 export const UserList: React.FC = () => {
   const { page } = useParams<UserListParams>();
   const history = useHistory();
-  const token = localStorage.getItem('token');
   const pageNumber = parseInt(page ?? '0');
-  const { data, error } = useQuery<UsersListData>(USERS_QUERY, {
-    context: {
-      headers: {
-        Authorization: token,
-      },
-    },
+  const { data, error } = useAuthQuery<UsersListData>(USERS_QUERY, {
     variables: {
       pageInfo: {
         offset: pageNumber * PAGE_SIZE,

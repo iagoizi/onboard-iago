@@ -1,25 +1,15 @@
-import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { ErrorMessage } from '../components/error-message';
 import { Input } from '../components/input';
 import { ADD_USER_MUTATION, UserInputType } from '../data/create-user-mutation';
 import { UserData } from '../data/login-mutation';
+import { useAuthMutation } from '../hooks/use-auth-mutation';
 import { EMAIL_REGEX, PASSWORD_REGEX, TELEFONE_REGEX } from '../utils/regex.ultils';
 
 //Ideia: criar um componente genérico de form
 export const AddUser: React.FC = () => {
   const [fields, setFields] = useState<UserInputType>({});
-  const token = localStorage.getItem('token');
-  const [createUser, { error, loading }] = useMutation<UserData>(ADD_USER_MUTATION, {
-    onError: (errorResponse) => {
-      console.warn(errorResponse);
-    },
-    context: {
-      headers: {
-        Authorization: token,
-      },
-    },
-  });
+  const [createUser, { error, loading }] = useAuthMutation<UserData>(ADD_USER_MUTATION);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFields((prevState: UserInputType) => {
