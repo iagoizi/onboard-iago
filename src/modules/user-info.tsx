@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { ErrorMessage } from '../components/error-message/error-message';
+import { H1 } from '../components/h1/h1';
 import { UserDetailed } from '../components/user-detail/user-detail';
 import { UserInfoData, USER_INFO_QUERY } from '../data/user-query';
 import { useAuthQuery } from '../hooks/use-auth-query';
@@ -18,7 +19,7 @@ export const UserInfo: React.FC = () => {
   });
   return (
     <div>
-      <h1>Informações do usuário</h1>
+      <H1>Informações do usuário</H1>
       <ErrorMessage>{error?.message}</ErrorMessage>
       <UserDetailed user={data?.user} />
     </div>

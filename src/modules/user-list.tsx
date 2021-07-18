@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import { Button } from '../components/button/button';
 import { Cell } from '../components/cell/cell';
 import { ErrorMessage } from '../components/error-message/error-message';
 import { UsersListData, USERS_QUERY } from '../data/users-query';
@@ -44,15 +45,14 @@ export const UserList: React.FC = () => {
   return (
     <div>
       <ErrorMessage>{error?.message}</ErrorMessage>
-      {error && <span style={{ color: 'red' }}>{error.message}</span>}
       {list}
-      <button onClick={loadPrevious} disabled={!data?.users.pageInfo.hasPreviousPage}>
+      <Button onClick={loadPrevious} disabled={!data?.users.pageInfo.hasPreviousPage}>
         Previous
-      </button>
-      <button onClick={loadNext} disabled={!data?.users.pageInfo.hasNextPage}>
+      </Button>
+      <Button onClick={loadNext} disabled={!data?.users.pageInfo.hasNextPage}>
         Next
-      </button>
-      <button onClick={goToAddUser}>Add User</button>
+      </Button>
+      <Button onClick={goToAddUser}>Add User</Button>
     </div>
   );
 };

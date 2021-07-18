@@ -1,5 +1,6 @@
 import React from 'react';
+import { ErrorStyled } from './error-message.style';
 
 export const ErrorMessage: React.FC = (props) => {
-  return <span style={{ color: 'red' }}>{props.children && props.children}</span>;
+  return <ErrorStyled>{props.children}</ErrorStyled>;
 };

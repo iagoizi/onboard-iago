@@ -8,7 +8,7 @@ export interface UserDetailedProps {
 
 export const UserDetailed: React.FC<UserDetailedProps> = (props) => {
   return (
-    <Cell>
+    <Cell direction='column'>
       {props.user && (
         <>
           <p>id:{props.user.id}</p>

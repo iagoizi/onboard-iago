@@ -1,8 +1,11 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Button } from '../components/button/button';
+import { Cell } from '../components/cell/cell';
 import { ErrorMessage } from '../components/error-message/error-message';
-import { Input } from '../components/input/input';
+import { FormField } from '../components/form/form-field';
+import { H1 } from '../components/h1/h1';
 import { LoginData, LOGIN_MUTATION } from '../data/login-mutation';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../utils/regex.ultils';
 import { USERS_PATH } from '../utils/routes';
@@ -43,29 +46,33 @@ export const LoginScreen: React.FC = () => {
 
   return (
     <div>
-      <h1>Bem-vindo(a) à Taqtile</h1>
+      <H1>Bem-vindo(a) à Taqtile</H1>
       <ErrorMessage>{error?.message}</ErrorMessage>
-      <form onSubmit={onSubmit}>
-        <Input
-          name='email'
-          label='E-mail'
-          type='email'
-          onChange={handleChange}
-          title='usuario@dominio.com'
-          pattern={EMAIL_REGEX}
-          required
-        />
-        <Input
-          name='password'
-          label='Senha'
-          type='password'
-          onChange={handleChange}
-          title='No mínimo 7 caracteres, tendo pelo menos uma letra e um dígito'
-          pattern={PASSWORD_REGEX}
-          required
-        />
-        <button disabled={loading}>Entrar {loading && '(carregando)'}</button>
-      </form>
+      <Cell>
+        <form onSubmit={onSubmit}>
+          <FormField
+            name='email'
+            label='E-mail'
+            type='email'
+            onChange={handleChange}
+            title='usuario@dominio.com'
+            pattern={EMAIL_REGEX}
+            required
+          />
+          <FormField
+            name='password'
+            label='Senha'
+            type='password'
+            onChange={handleChange}
+            title='No mínimo 7 caracteres, tendo pelo menos uma letra e um dígito'
+            pattern={PASSWORD_REGEX}
+            required
+          />
+          <Cell direction='column'>
+            <Button disabled={loading}>Entrar {loading && '(carregando)'}</Button>
+          </Cell>
+        </form>
+      </Cell>
     </div>
   );
 };
