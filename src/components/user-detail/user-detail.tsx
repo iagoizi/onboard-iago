@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserData } from '../data/login-mutation';
-import { Cell } from './cell';
+import { UserData } from '../../data/login-mutation';
+import { Cell } from '../cell/cell';
 
 export interface UserDetailedProps {
   user?: UserData;

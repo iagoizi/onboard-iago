@@ -1,8 +1,8 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ErrorMessage } from '../components/error-message';
-import { Input } from '../components/input';
+import { ErrorMessage } from '../components/error-message/error-message';
+import { Input } from '../components/input/input';
 import { LoginData, LOGIN_MUTATION } from '../data/login-mutation';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../utils/regex.ultils';
 import { USERS_PATH } from '../utils/routes';

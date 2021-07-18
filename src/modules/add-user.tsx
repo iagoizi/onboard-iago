@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ErrorMessage } from '../components/error-message';
-import { Input } from '../components/input';
+import { ErrorMessage } from '../components/error-message/error-message';
+import { Input } from '../components/input/input';
 import { ADD_USER_MUTATION, UserInputType } from '../data/create-user-mutation';
 import { UserData } from '../data/login-mutation';
 import { useAuthMutation } from '../hooks/use-auth-mutation';

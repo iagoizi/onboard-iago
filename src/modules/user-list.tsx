@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Cell } from '../components/cell';
-import { ErrorMessage } from '../components/error-message';
+import { Cell } from '../components/cell/cell';
+import { ErrorMessage } from '../components/error-message/error-message';
 import { UsersListData, USERS_QUERY } from '../data/users-query';
 import { useAuthQuery } from '../hooks/use-auth-query';
 import { PAGE_SIZE } from '../utils/consts';
