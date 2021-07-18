@@ -23,7 +23,9 @@ export const Input: React.FC<InputProps> = (props) => {
         title={props.title}
         pattern={props.pattern}
         required={props.required}
-      />
+      >
+        {props.children}
+      </input>
     </>
   );
 };

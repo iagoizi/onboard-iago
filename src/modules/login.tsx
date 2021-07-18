@@ -5,6 +5,7 @@ import { ErrorMessage } from '../components/error-message';
 import { Input } from '../components/input';
 import { LoginData, LOGIN_MUTATION } from '../data/login-mutation';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '../utils/regex.ultils';
+import { USERS_PATH } from '../utils/routes';
 
 interface LoginScreenState {
   email: string;
@@ -16,7 +17,7 @@ export const LoginScreen: React.FC = () => {
   const history = useHistory();
   const handleCompleted = ({ login }: LoginData) => {
     localStorage.setItem('token', login.token);
-    history.push('/user-list/0');
+    history.push(`${USERS_PATH}/0`);
   };
 
   const [authenticate, { error, loading }] = useMutation<LoginData>(LOGIN_MUTATION, {
