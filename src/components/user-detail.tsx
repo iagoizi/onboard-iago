@@ -2,14 +2,22 @@ import React from 'react';
 import { UserData } from '../data/login-mutation';
 import { Cell } from './cell';
 
-export const UserDetailed: React.FC<UserData> = (props) => {
+export interface UserDetailedProps {
+  user?: UserData;
+}
+
+export const UserDetailed: React.FC<UserDetailedProps> = (props) => {
   return (
     <Cell>
-      <p>id:{props.id}</p>
-      <p>email:{props.email}</p>
-      <p>name:{props.name}</p>
-      <p>telefone:{props.phone}</p>
-      <p>role:{props.role}</p>
+      {props.user && (
+        <>
+          <p>id:{props.user.id}</p>
+          <p>email:{props.user.email}</p>
+          <p>name:{props.user.name}</p>
+          <p>telefone:{props.user.phone}</p>
+          <p>role:{props.user.role}</p>
+        </>
+      )}
     </Cell>
   );
 };
