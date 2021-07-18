@@ -59,14 +59,7 @@ export const AddUser: React.FC = () => {
           required
         />
         <Input name='name' label='Nome' type='text' onChange={handleChange} required />
-        <Input
-          name='birthDate'
-          label='Data de nascimento'
-          type='date'
-          onChange={handleChange}
-          title='Data não pode ser futura'
-          required
-        />
+        <Input name='birthDate' label='Data de nascimento' type='date' onChange={handleChange} required />
         <Input name='role' label='Role' type='text' onChange={handleChange} required />
         <Input
           name='phone'
