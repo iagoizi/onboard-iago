@@ -10,11 +10,7 @@ import { EMAIL_REGEX, PASSWORD_REGEX, TELEFONE_REGEX } from '../utils/regex.ulti
 export const AddUser: React.FC = () => {
   const [fields, setFields] = useState<UserInputType>({});
   const token = localStorage.getItem('token');
-  const handleComplete = (data: UserData) => {
-    console.log(data);
-  };
   const [createUser, { error, loading }] = useMutation<UserData>(ADD_USER_MUTATION, {
-    onCompleted: handleComplete,
     onError: (errorResponse) => {
       console.warn(errorResponse);
     },
@@ -36,7 +32,6 @@ export const AddUser: React.FC = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(token);
     createUser({ variables: { data: fields } });
   };
 
