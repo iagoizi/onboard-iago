@@ -9,8 +9,9 @@ export const ButtonStyled = styled.button`
   min-height: 44px;
   border-radius: 10px;
   cursor: pointer;
-  ::disabled {
-    background-color: black;
+  :disabled {
+    cursor: default;
+    opacity: 0.3;
   }
 `;
 
