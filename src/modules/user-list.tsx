@@ -1,11 +1,11 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { Cell } from '../components/cell';
 import { ErrorMessage } from '../components/error-message';
 import { UsersListData, USERS_QUERY } from '../data/users-query';
 import { useAuthQuery } from '../hooks/use-auth-query';
 import { PAGE_SIZE } from '../utils/consts';
-import { ADD_USER_PATH, USERS_PATH } from '../utils/routes';
+import { ADD_USER_PATH, USERS_PATH, USER_INFO_PATH } from '../utils/routes';
 
 interface UserListParams {
   page?: string;
@@ -34,9 +34,11 @@ export const UserList: React.FC = () => {
     history.push(`${ADD_USER_PATH}`);
   };
   const list = data?.users.nodes.map((user) => (
-    <Cell key={user.id}>
-      <p>{`${user.name} : ${user.email}`}</p>
-    </Cell>
+    <Link key={user.id} to={`${USER_INFO_PATH}/${user.id}`}>
+      <Cell>
+        <p>{`${user.name} : ${user.email}`}</p>
+      </Cell>
+    </Link>
   ));
 
   return (
