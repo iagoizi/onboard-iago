@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserData } from '../data/login-mutation';
-import { Cell } from './cell';
+import { UserData } from '../../data/login-mutation';
+import { Cell } from '../cell/cell';
 
 export interface UserDetailedProps {
   user?: UserData;
@@ -8,7 +8,7 @@ export interface UserDetailedProps {
 
 export const UserDetailed: React.FC<UserDetailedProps> = (props) => {
   return (
-    <Cell>
+    <Cell direction='column'>
       {props.user && (
         <>
           <p>id:{props.user.id}</p>

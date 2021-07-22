@@ -1,6 +1,9 @@
 import React from 'react';
+import { Cell } from '../cell/cell';
+import { Input } from './input';
+import { Label } from './label';
 
-interface InputProps {
+interface FormFieldProps {
   type: string;
   name: string;
   label: string;
@@ -11,23 +14,23 @@ interface InputProps {
   required?: boolean;
 }
 
-export const Input: React.FC<InputProps> = (props) => {
+export const FormField: React.FC<FormFieldProps> = (props) => {
   return (
-    <>
-      <label htmlFor={props.name}>{props.label}</label>
-      <input
+    <Cell direction='column'>
+      <Label htmlFor={props.name}>{props.label}</Label>
+      <Input
         type={props.type}
         name={props.name}
         onChange={props.onChange}
-        placeholder={props.placeHolder}
+        placeHolder={props.placeHolder}
         title={props.title}
         pattern={props.pattern}
         required={props.required}
       >
         {props.children}
-      </input>
-    </>
+      </Input>
+    </Cell>
   );
 };
 
-Input.displayName = 'Input';
+FormField.displayName = 'FormField';

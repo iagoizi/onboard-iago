@@ -13,8 +13,8 @@ export const App: React.FC = () => {
       <BrowserRouter>
         <Switch>
           <Route path={LOGIN_PATH} component={LoginScreen} />
-          <Route path={`${USERS_PATH}/:page`} component={UserList} />
-          <Route path={`${USER_INFO_PATH}/:userId`} component={UserInfo} />
+          <Route path={`${USERS_PATH}/:page(\\d+)`} component={UserList} />
+          <Route path={`${USER_INFO_PATH}/:userId(\\d+)`} component={UserInfo} />
           <Route path={ADD_USER_PATH} component={AddUser} />
           <Route path='/' component={NotFound} />
         </Switch>
